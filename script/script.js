@@ -65,6 +65,6 @@ function submitTest() {
 
     const resultElement = document.getElementById("result");
     resultElement.style.display = "block";
-    document.getElementById("score").textContent = totalScore;
+    resultElement.querySelector('.score').textContent = totalScore.toString();
     document.getElementById("percentage").textContent = percentage.toFixed(2);
 }
