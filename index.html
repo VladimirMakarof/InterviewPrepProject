@@ -1,48 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="style/style.css">
   <title>InterviewPrepProject</title>
 </head>
+
 <body>
-<h1>Тест по компетенциям</h1>
+  <h1>Тест по компетенциям</h1>
 
-<div class="question">
-  <h2>Блок компетенций - Верстка и основа</h2>
-  <h3>HTML</h3>
-  <div class="question-block">
-    <p class="question-text" onclick="toggleAnswer(this)">Понимание структуры базовой разметки страницы</p>
-    <div class="answer">
-      <span class="answer-text">Структура базовой разметки страницы включает теги &lt;html&gt;, &lt;head&gt; и &lt;body&gt;, которые определяют структуру документа.</span>
-      <span class="hidden-answer">(Правильный ответ)</span>
-      <span class="minus-points">Оценка -5</span>
+  <div class="question">
+    <h2>Блок компетенций - Верстка и основа</h2>
+    <h3>HTML</h3>
+    <div class="question-block">
+      <p class="question-text" onclick="toggleAnswer(this)">Понимание структуры базовой разметки
+        страницы</p>
+      <div class="answer">
+        <span class="answer-text">Структура базовой разметки страницы включает теги &lt;html&gt;,
+          &lt;head&gt; и &lt;body&gt;, которые определяют структуру документа.</span>
+        <span class="hidden-answer">(Правильный ответ)</span>
+        <span class="minus-points">Оценка -5</span>
+      </div>
     </div>
+    <select onchange="updateScore(this)">
+      <option value="-5">-5</option>
+      <option value="0" selected>0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+
   </div>
-  <select onchange="updateScore(this)">
-    <option value="-5">-5</option>
-    <option value="0" selected>0</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-  </select>
 
-</div>
+  <div class="question">
+    <h2>Блок компетенций - Верстка и основа</h2>
+    <h3>HTML</h3>
+    <div class="question-block">
+      <p class="question-text" onclick="toggleAnswer(this)">Понимание структуры базовой разметки
+        страницы</p>
+      <div class="answer">
+        <span class="answer-text">Структура базовой разметки страницы включает теги &lt;html&gt;,
+          &lt;head&gt; и &lt;body&gt;, которые определяют структуру документа.</span>
+        <span class="hidden-answer">(Правильный ответ)</span>
+        <span class="minus-points">Оценка -5</span>
+      </div>
+    </div>
+    <select onchange="updateScore(this)">
+      <option value="-5">-5</option>
+      <option value="0" selected>0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+  
+  </div>
 
 
-<button onclick="submitTest()">Отправить</button>
+
+  <button onclick="submitTest()">Отправить</button>
 
 
-<div id="result" style="display: none;">
-  <h2>Итог</h2>
-  <p>Вы набрали <span id="score"></span> баллов.</p>
-  <p>Ваш процент от максимального балла: <span id="percentage"></span>%</p>
-</div>
-<script src="script/script.js"></script>
+  <div id="result" style="display: none;">
+    <h2>Итог</h2>
+    <p>Вы набрали <span id="score"></span> баллов.</p>
+    <p>Ваш процент от максимального балла: <span id="percentage"></span>%</p>
+  </div>
+  <script src="script/script.js"></script>
 </body>
+
 </html>

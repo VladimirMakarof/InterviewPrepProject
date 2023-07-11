@@ -2,7 +2,7 @@ function toggleAnswer(element) {
     const questionElement = element.parentElement.parentElement;
     const answerElement = questionElement.querySelector('.answer');
     const select = questionElement.querySelector('select');
-    if (select.value <= 0 ){
+    if (select.value <= 0) {
         if (!questionElement.classList.contains("show")) {
             questionElement.classList.add("show");
 
@@ -65,6 +65,6 @@ function submitTest() {
 
     const resultElement = document.getElementById("result");
     resultElement.style.display = "block";
-    resultElement.querySelector('.score').textContent = totalScore.toString();
+    resultElement.querySelector('#score').textContent = totalScore.toString();
     document.getElementById("percentage").textContent = percentage.toFixed(2);
 }
