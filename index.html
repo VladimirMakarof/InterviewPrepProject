@@ -13,66 +13,16 @@
 <body>
   <h1>Тест по компетенциям</h1>
 
-  <div class="question">
-    <h2>Блок компетенций - Верстка и основа</h2>
-    <h3>HTML</h3>
-    <div class="question-block">
-      <p class="question-text" onclick="toggleAnswer(this)">Понимание структуры базовой разметки
-        страницы</p>
-      <div class="answer">
-        <span class="answer-text">Структура базовой разметки страницы включает теги &lt;html&gt;,
-          &lt;head&gt; и &lt;body&gt;, которые определяют структуру документа.</span>
-        <span class="hidden-answer">(Правильный ответ)</span>
-        <span class="minus-points">Оценка -5</span>
-      </div>
-    </div>
-    <select onchange="updateScore(this)">
-      <option value="-5">-5</option>
-      <option value="0" selected>0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-    </select>
+  <div id="question-container"></div>
 
-  </div>
-
-  <div class="question">
-    <h2>Блок компетенций - Верстка и основа</h2>
-    <h3>HTML</h3>
-    <div class="question-block">
-      <p class="question-text" onclick="toggleAnswer(this)">Понимание структуры базовой разметки
-        страницы</p>
-      <div class="answer">
-        <span class="answer-text">Структура базовой разметки страницы включает теги &lt;html&gt;,
-          &lt;head&gt; и &lt;body&gt;, которые определяют структуру документа.</span>
-        <span class="hidden-answer">(Правильный ответ)</span>
-        <span class="minus-points">Оценка -5</span>
-      </div>
-    </div>
-    <select onchange="updateScore(this)">
-      <option value="-5">-5</option>
-      <option value="0" selected>0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-    </select>
-  
-  </div>
-
-
-
-  <button onclick="submitTest()">Отправить</button>
-
+  <button type="button" onclick="submitTest()">Отправить</button>
 
   <div id="result" style="display: none;">
     <h2>Итог</h2>
     <p>Вы набрали <span id="score"></span> баллов.</p>
     <p>Ваш процент от максимального балла: <span id="percentage"></span>%</p>
   </div>
+  <script src="script/loadQuestions.js"></script>
   <script src="script/script.js"></script>
 </body>
 
