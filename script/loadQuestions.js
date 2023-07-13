@@ -1,11 +1,14 @@
+// Переменные для таймера
 let intervalId;
 let timer;
 let initialTimer = 60 * 2;
 
+// Функция запуска таймера
 function startTimer(duration, display) {
   timer = duration;
   let minutes, seconds;
 
+  // Функция обновления отображения таймера
   function updateDisplay() {
     minutes = parseInt(timer / 60, 10);
     seconds = parseInt(timer % 60, 10);
@@ -19,13 +22,14 @@ function startTimer(duration, display) {
 
   updateDisplay();
 
+  // Обновление отображения каждую секунду
   intervalId = setInterval(function () {
     updateDisplay();
 
+    // Уменьшение таймера и проверка на истечение времени
     if (--timer < 0) {
       clearInterval(intervalId);
       display.textContent = "Время истекло";
-     // document.getElementById("submit-button").disabled = true;
       const submitButton = document.querySelector('button[onclick="submitTest()"]');
       if (submitButton) {
         submitButton.disabled = true;
@@ -34,9 +38,7 @@ function startTimer(duration, display) {
   }, 1000);
 }
 
-
-
-
+// Инициализация таймера при загрузке страницы
 document.addEventListener("DOMContentLoaded", function () {
   const timerContainer = document.createElement("div");
   timerContainer.id = "timer";
@@ -56,12 +58,14 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("timer", timer.toString());
   }
 
+  // Создание кнопки паузы
   const pauseButton = document.createElement("button");
   pauseButton.id = "pause-button";
   pauseButton.textContent = "Пауза";
   document.body.insertBefore(pauseButton, timerContainer.nextSibling);
   let isPaused = false;
 
+  // Обработчик клика по кнопке паузы
   pauseButton.addEventListener("click", function () {
     if (isPaused) {
       startTimer(timer, timerDisplay);
@@ -73,9 +77,12 @@ document.addEventListener("DOMContentLoaded", function () {
     isPaused = !isPaused;
   });
 
+  // Сохранение таймера перед закрытием страницы
   window.addEventListener("beforeunload", function () {
     localStorage.setItem("timer", timer.toString());
   });
+
+  // Создание таблицы с оценками
   const tableContainer = document.createElement("div");
   tableContainer.id = "table-container";
 
@@ -83,6 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
   table.id = "score-table";
   table.style.borderCollapse = "collapse";
 
+  // Создание заголовка таблицы
   const tableHeader = document.createElement("thead");
   const headerRow = document.createElement("tr");
   const headerCell1 = document.createElement("th");
@@ -108,6 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
     { score: 5, description: "Экспертный. Формирую новое знание!", explanation: "Глубокое владение знаниями, инновационными подходами к решению задач любого уровня сложности (в т.ч. впервые появившиеся задачи), способность создавать свои собственные паттерны и библиотеки, решающие задачу. Готовность адаптировать либо разрабатывать корпоративные стандарты технологии (методологию, правила, стратегию применения) на уровне Компании." }
   ];
 
+  // Создание строк таблицы
   rows.forEach((row) => {
     const tableRow = document.createElement("tr");
     const cell1 = document.createElement("td");
@@ -130,6 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
   table.appendChild(tableBody);
   tableContainer.appendChild(table);
 
+  // Добавление таблицы и информационного текста на страницу
   const infoText = document.createElement("p");
   infoText.textContent = "В случае, если вы не знаете ответа, вы можете нажать на вопрос, и появится ответ, но это будет автоматически означать 'Нет знаний'.";
   infoText.style.color = "red"; // Устанавливаем красный цвет текста
@@ -138,11 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.body.insertBefore(infoText, pauseButton.nextSibling);
 });
 
-
-
-
-
-// Остальной код без изменений
+// Функция отображения ответа на вопрос
 function toggleAnswer(element) {
   console.log('toggleAnswer called');
   const questionElement = element.parentElement.parentElement;
@@ -163,6 +169,7 @@ function toggleAnswer(element) {
   }
 }
 
+// Функция обновления счета
 function updateScore(select) {
   console.log('updateScore called');
   const questionElement = select.parentElement.parentElement;
@@ -181,6 +188,7 @@ function updateScore(select) {
   }
 }
 
+// Загрузка вопросов из файла JSON
 fetch('script/questions.json')
     .then(response => response.json())
     .then(data => {
@@ -235,6 +243,7 @@ fetch('script/questions.json')
           const select = document.createElement('select');
           select.onchange = () => updateScore(select);
 
+          // Создание опций для выбора оценки
           for (let i = -5; i <= 5; i++) {
             if (i === -1 || i === -2 || i === -3 || i === -4) {
               continue;
@@ -257,6 +266,7 @@ fetch('script/questions.json')
         questionContainer.appendChild(topicDiv);
       });
 
+      // Добавление обработчиков для отображения ответа и обновления счета
       const questionTextElements = document.querySelectorAll('.question-text');
       questionTextElements.forEach(element => {
         element.addEventListener('click', function () {
@@ -273,6 +283,7 @@ fetch('script/questions.json')
     })
     .catch(error => console.error(error));
 
+// Функция отправки теста
 function submitTest() {
   const questionElements = document.getElementsByClassName("question");
   let totalScore = 0;
