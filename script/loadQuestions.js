@@ -1,6 +1,6 @@
 let intervalId;
 let timer;
-let initialTimer = 60 * 20;
+let initialTimer = 60 * 2;
 
 function startTimer(duration, display) {
   timer = duration;
@@ -25,7 +25,11 @@ function startTimer(duration, display) {
     if (--timer < 0) {
       clearInterval(intervalId);
       display.textContent = "Время истекло";
-      document.getElementById("submit-button").disabled = true;
+     // document.getElementById("submit-button").disabled = true;
+      const submitButton = document.querySelector('button[onclick="submitTest()"]');
+      if (submitButton) {
+        submitButton.disabled = true;
+      }
     }
   }, 1000);
 }
