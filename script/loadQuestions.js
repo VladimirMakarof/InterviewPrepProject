@@ -112,3 +112,31 @@ fetch('script/questions.json')
     });
   })
   .catch(error => console.error(error));
+
+
+function submitTest() {
+  const questionElements = document.getElementsByClassName("question");
+  let totalScore = 0;
+  let maxScore = 0;
+  for (let i = 0; i < questionElements.length; i++) {
+    const questionElement = questionElements[i];
+    const select = questionElement.querySelector('select');
+    const selectedScore = parseInt(select.value);
+    const minusPoints = questionElement.querySelector('.minus-points');
+    if (minusPoints) {
+      if (select.disabled) {
+        totalScore -= 5;
+      } else {
+        totalScore += selectedScore;
+        minusPoints.style.display = "none";
+      }
+    }
+    select.disabled = true;
+    maxScore += 5;
+  }
+  const percentage = (totalScore / maxScore) * 100;
+
+  const resultElement = document.getElementById("result");
+  resultElement.style.display = "block";
+  resultElement.querySelector('#score').textContent = totalScore.toString();
+  document.getElementById("percentage").textContent = percentage.toFixed(2);}
