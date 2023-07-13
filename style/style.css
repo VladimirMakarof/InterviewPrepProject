@@ -1,6 +1,7 @@
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
+  background-color: #f1f1f1;
 }
 
 h1 {
@@ -14,6 +15,11 @@ h1 {
 .question-text {
   cursor: pointer;
   text-decoration: underline;
+  
+}
+
+.question-block{
+  width: fit-content;
 }
 
 .question-block {
@@ -80,4 +86,10 @@ select:focus {
 }
 .question-block select {
   max-width: 150px;
+}
+span {
+  white-space: break-spaces;
+}
+.centered{
+  text-align: center;
 }
